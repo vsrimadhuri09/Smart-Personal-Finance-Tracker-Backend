@@ -1,0 +1,39 @@
+﻿spring:
+  datasource:
+    url: ${DB_URL:${DATABASE_URL:jdbc:postgresql://localhost:5432/finance_tracker}}
+    username: ${DB_USERNAME:${DATABASE_USERNAME:postgres}}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  port: ${PORT:8080}
+
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration: 86400000
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    com.financetracker: INFO
+    org.springframework.security: WARN
+
